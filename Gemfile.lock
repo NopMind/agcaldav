@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    agcaldav (0.2.5.5)
+    agcaldav (0.2.5.6)
       builder
       icalendar (~> 1.5)
       net-http-digest_auth
