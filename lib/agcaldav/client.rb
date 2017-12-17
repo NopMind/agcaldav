@@ -142,8 +142,9 @@ module AgCalDAV
     end
 
     def create_event event
+      #c = Calendar.new
+      #c.events = []
       c = Calendar.new
-      c.events = []
       uuid = UUID.new.generate
       raise DuplicateError if entry_with_uuid_exists?(uuid)
       c.event do
