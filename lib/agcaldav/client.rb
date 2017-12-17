@@ -146,7 +146,7 @@ module AgCalDAV
       #c.events = []
       c = Calendar.new
       uuid = UUID.new.generate
-      raise DuplicateError if entry_with_uuid_exists?(uuid)
+      #raise DuplicateError if entry_with_uuid_exists?(uuid)
       c.event do
         uid           uuid 
         dtstart       DateTime.parse(event[:start])
