@@ -147,21 +147,21 @@ module AgCalDAV
       c = Calendar.new
       uuid = UUID.new.generate
       #raise DuplicateError if entry_with_uuid_exists?(uuid)
-      c.event do
-        uid           uuid 
-        dtstart       DateTime.parse(event[:start])
-        dtend         DateTime.parse(event[:end])
-        categories    event[:categories]# Array
-        contacts      event[:contacts] # Array
-        attendees     event[:attendees]# Array
-        duration      event[:duration]
-        summary       event[:title]
-        description   event[:description]
-        klass         event[:accessibility] #PUBLIC, PRIVATE, CONFIDENTIAL
-        location      event[:location]
-        geo_location  event[:geo_location]
-        status        event[:status]
-        url           event[:url]
+      c.event do |e|
+        e.uid           uuid
+        e.dtstart       DateTime.parse(event[:start])
+        e.dtend         DateTime.parse(event[:end])
+        e.categories    event[:categories]# Array
+        e.contacts      event[:contacts] # Array
+        e.attendees     event[:attendees]# Array
+        e.duration      event[:duration]
+        e.summary       event[:title]
+        e.description   event[:description]
+        e.ip_class         event[:accessibility] #PUBLIC, PRIVATE, CONFIDENTIAL
+        e.location      event[:location]
+        e.geo_location  event[:geo_location]
+        e.status        event[:status]
+        e.url           event[:url]
       end
       cstring = c.to_ical
       res = nil
