@@ -1,9 +1,9 @@
-#Ruby CalDAV library named "agcaldav"
+# Ruby CalDAV library named "agcaldav"
 **agcaldav is a CalDAV library based on martinpovolny/ruby-caldav and 4fthawaiian/ruby-caldav and collectiveidea/caldav**
 
 **Please keep in mind, agcaldav ist still under heavy development and still not finished...**
 
-##Usage Events
+## Usage Events
 
 First, you've to install the gem
 
@@ -25,7 +25,7 @@ Alternatively, the proxy parameters can be specified:
 	cal = AgCalDAV::Client.new(:uri => "http://localhost:5232/user/calendar",:user => "user" , :password => "password", :proxy_uri => "http://my-proxy.com:8080")
 
 
-####Create an Event
+#### Create an Event
 
     result = cal.create_event(:start => "2012-12-29 10:00", :end => "2012-12-30 12:00", :title => "12345", :description => "12345 12345")
 
@@ -44,7 +44,7 @@ get UID of this Event:
     => "e795c480-34e0-0130-7d1d-109add70606c"
 
 
-####Find an Event  (via UUID)  
+#### Find an Event  (via UUID)  
 
     result = cal.find_event("e795c480-34e0-0130-7d1d-109add70606c")
     
@@ -52,7 +52,7 @@ get UID of this Event:
     => Icalendar::Event
 
 
-####Find Events within time interval
+#### Find Events within time interval
 
     result = cal.find_events(:start => "2012-10-01 08:00", :end => "2013-01-01")
 
@@ -67,7 +67,7 @@ get UID of this Event:
 
 
 
-####Update Event
+#### Update Event
 
     event = {:start => "2012-12-29 10:00", :end => "2012-12-30 12:00", :title => "12345", :description => "sdkvjsdf sdkf sdkfj sdkf dsfj"}
     # set UUID 
@@ -76,21 +76,21 @@ get UID of this Event:
 
 
 
-####Delete Event
+#### Delete Event
 
     cal.delete_event("e795c480-34e0-0130-7d1d-109add70606c")
 
 
 
 
-##Usage ToDo
+## Usage ToDo
 
-####not finished ATM
+#### not finished ATM
 Have a look tomorrow...
 
 
 
-##Work to be done ...
+## Work to be done ...
 
 1. find and notify if overlapping events              
 2. code cleanup -> more ActiveRecord style    
@@ -98,7 +98,7 @@ Have a look tomorrow...
                                                              
 
 
-##Testing
+## Testing
 
 agcaldav will use RSpec for its test coverage. Inside the gem
 directory, you can run the specs for RoR 3.x with:
@@ -108,13 +108,13 @@ directory, you can run the specs for RoR 3.x with:
 
 
  
-##Licence
+## Licence
 
 MIT
 
 
 
-##Contributors
+## Contributors
 
 [Check all contributors][c]
 
