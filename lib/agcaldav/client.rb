@@ -75,8 +75,8 @@ module AgCalDAV
           req.body = AgCalDAV::Request::ReportVEVENT.new(Time.at(data[:start]).utc.strftime("%Y%m%dT%H%M%S"), 
                                                         Time.at(data[:end]).utc.strftime("%Y%m%dT%H%M%S") ).to_xml
         else
-          req.body = AgCalDAV::Request::ReportVEVENT.new(DateTime.parse(data[:start]).utc.strftime("%Y%m%dT%H%M%S"), 
-                                                        DateTime.parse(data[:end]).utc.strftime("%Y%m%dT%H%M%S") ).to_xml
+          req.body = AgCalDAV::Request::ReportVEVENT.new(DateTime.parse(data[:start]).new_offset(0).strftime("%Y%m%dT%H%M%S"),
+                                                        DateTime.parse(data[:end]).new_offset(0).strftime("%Y%m%dT%H%M%S") ).to_xml
         end
         res = http.request(req)
       } 
@@ -148,20 +148,20 @@ module AgCalDAV
       uuid = UUID.new.generate
       #raise DuplicateError if entry_with_uuid_exists?(uuid)
       c.event do |e|
-        e.uid           uuid
-        e.dtstart       DateTime.parse(event[:start])
-        e.dtend         DateTime.parse(event[:end])
-        e.categories    event[:categories]# Array
-        e.contacts      event[:contacts] # Array
-        e.attendees     event[:attendees]# Array
-        e.duration      event[:duration]
-        e.summary       event[:title]
-        e.description   event[:description]
-        e.ip_class         event[:accessibility] #PUBLIC, PRIVATE, CONFIDENTIAL
-        e.location      event[:location]
-        e.geo_location  event[:geo_location]
-        e.status        event[:status]
-        e.url           event[:url]
+        e.uid           = uuid
+        e.dtstart       = DateTime.parse(event[:start])
+        e.dtend         = DateTime.parse(event[:end])
+        e.categories    = event[:categories]# Array
+        e.contact      = event[:contacts] # Array
+        e.attendee     = event[:attendees]# Array
+        e.duration      = event[:duration]
+        e.summary       = event[:title]
+        e.description   = event[:description]
+        e.ip_class      = event[:accessibility] #PUBLIC, PRIVATE, CONFIDENTIAL
+        e.location      = event[:location]
+        e.geo  = event[:geo_location]
+        e.status        = event[:status]
+        e.url           = event[:url]
       end
       cstring = c.to_ical
       res = nil
